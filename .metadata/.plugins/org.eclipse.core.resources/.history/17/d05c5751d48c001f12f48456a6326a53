@@ -1,0 +1,19 @@
+
+import java.util.Date;
+
+public class RelojAcelerado {
+    private long fechaInicio;
+    private int factorAceleracion;
+
+    public RelojAcelerado(int factorAceleracion) {
+        this.fechaInicio = System.currentTimeMillis();
+        this.factorAceleracion = factorAceleracion;
+    }
+
+    public Date getTiempoAcelerado() {
+        long ahora = System.currentTimeMillis();
+        long diferencia = ahora - fechaInicio;
+        long tiempoAcelerado = fechaInicio + (diferencia * factorAceleracion);
+        return new Date(tiempoAcelerado);
+    }
+}

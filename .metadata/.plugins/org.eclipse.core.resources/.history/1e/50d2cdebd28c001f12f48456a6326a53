@@ -1,0 +1,11 @@
+
+package clase;
+
+public class Main {
+    public static void main(String[] args) {
+        FechaYHora fechaYHora = new FechaYHora();
+        System.out.println(fechaYHora.getFechaAcelerada());
+        System.out.println(fechaYHora.getFechaAcelerada());
+    }
+}
+

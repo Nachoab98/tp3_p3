@@ -1,0 +1,27 @@
+package clase;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class FechaYHora {
+    private Date fecha;
+
+    public FechaYHora() {
+        this.fecha = new Date();
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public Date getFechaAcelerada() {
+        long tiempoActual = fecha.getTime();
+        long tiempoAcelerado = tiempoActual * 2;
+        return new Date(tiempoAcelerado);
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        return "FechaYHora actual: " + formato.format(fecha) + ", FechaYHora acelerada: " + formato.format(getFechaAcelerada());
+    }
+}

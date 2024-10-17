@@ -1,0 +1,16 @@
+package clase;
+
+public class Main {
+    public static void main(String[] args) {
+        FechaYHora fechaYHora = new FechaYHora();
+        while (true) {
+            System.out.println(fechaYHora);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            fechaYHora = new FechaYHora();
+        }
+    }
+}
