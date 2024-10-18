@@ -18,6 +18,8 @@ public class DiaTest {
     private Dia _dia;
     private Comparator<Reserva> _comp;
 
+    // NOTA: Generados con ChatGPT
+    
     @BeforeEach
     public void setUp() {
         _dia = new Dia();

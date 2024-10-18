@@ -7,7 +7,7 @@ public class Reserva{
 	private int _precioOfrecido;
 	
 	public Reserva(int horaInicio, int horaFin, int precioOfrecido) {
-		if(!(horaInicio > 0 && horaFin <= 24 && horaInicio < horaFin)) {
+		if(!(horaInicio >= 0 && horaFin <= 24 && horaInicio < horaFin)) {
 			throw new RuntimeException("Horarios invalidos");
 		}
 		if(precioOfrecido < 0) {
