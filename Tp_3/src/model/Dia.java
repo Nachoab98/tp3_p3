@@ -1,6 +1,7 @@
 package model;
 
 import java.util.LinkedList;
+import java.util.Comparator;
 
 import model.Reserva;
 
@@ -16,4 +17,27 @@ public class Dia {
 		this._ofertas.add(new Reserva(horaInicio,horaFin,precio));
 	}
 	
+	public LinkedList<Reserva> cerrarDia(Comparator<Reserva> comparador){
+		
+		// creamos una copia ordenada de las ofertas
+		LinkedList<Reserva> ofertasOrdenadas = new LinkedList<Reserva>(this._ofertas);
+		LinkedList<Reserva> res = new LinkedList<Reserva>();
+		
+		ofertasOrdenadas.sort(comparador);
+		
+		for(Reserva oferta : ofertasOrdenadas) {
+			boolean ofertaSuperpuesta = false;
+			for(Reserva r : res) {
+				if(Reserva.superponen(oferta, r)) {
+					ofertaSuperpuesta = true;
+					break;
+				}
+			}
+			if(!ofertaSuperpuesta) {
+				res.add(oferta);
+			}
+		}
+		
+		return res;
+	}
 }
