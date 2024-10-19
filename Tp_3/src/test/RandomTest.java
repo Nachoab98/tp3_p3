@@ -3,6 +3,7 @@ package test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import model.ComparadorPrecioXHora;
 import model.Dia;
+import model.OPT;
 import model.Reserva;
 
 class RandomTest {
@@ -33,7 +35,22 @@ class RandomTest {
 
 	@Test
 	void test() {
-		this._dia.cerrarDia(_comp);
+		boolean rompio = false;
+		for(int i = 0; !rompio && i < 10000; i++) {
+			
+			_dia = new Dia();
+			for (int t = 0; t < _cantTurnos; t++) {
+				this.reservarTurnoRandom();
+			}
+			
+			int subOptim = calcularGanancia(this._dia.cerrarDia(_comp));
+			int optim = this._dia.solucionOptima();
+			
+			if (subOptim > optim) {
+				rompio = true;
+			}
+		}
+		System.out.println("finish");
 	}
 
 	private void reservarTurnoRandom() {
@@ -66,5 +83,13 @@ class RandomTest {
 		precio = precio * (fin - inicio);
 
 		this._dia.ofertar(inicio, fin, precio);
+	}
+	
+	private int calcularGanancia(LinkedList<Reserva> reservas) {
+		int res = 0;
+		for(Reserva r : reservas) {
+			res += r.precio();
+		}
+		return res;
 	}
 }
