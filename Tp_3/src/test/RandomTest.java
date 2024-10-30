@@ -82,7 +82,7 @@ class RandomTest {
 
 		precio = precio * (fin - inicio);
 
-		this._dia.ofertar(inicio, fin, precio);
+		this._dia.ofertar(inicio, fin, precio, "Random");
 	}
 	
 	private int calcularGanancia(LinkedList<Reserva> reservas) {

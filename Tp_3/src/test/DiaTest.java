@@ -30,31 +30,31 @@ public class DiaTest {
 
     @Test
     public void testOfertar() {
-        _dia.ofertar(10, 12, 100);
+        _dia.ofertar(10, 12, 100, "Ronaldo");
         LinkedList<Reserva> ofertas = _dia.cerrarDia(_comp);
         assertEquals(1, ofertas.size(), "Debería haber una oferta");
     }
 
     @Test
     public void testCierreSinSuperposicion() {
-        _dia.ofertar(10, 12, 100);
-        _dia.ofertar(12, 14, 150);
+        _dia.ofertar(10, 12, 100, "Ronaldo");
+        _dia.ofertar(12, 14, 150, "Higuain");
         LinkedList<Reserva> resultado = _dia.cerrarDia(_comp);
         assertEquals(2, resultado.size(), "Debería haber 2 ofertas, ya que no se superponen.");
     }
 
     @Test
     public void testCierreConSuperposicion() {
-        _dia.ofertar(10, 12, 100);
-        _dia.ofertar(11, 13, 200); // Se superpone con la anterior
+        _dia.ofertar(10, 12, 100, "Ronaldo");
+        _dia.ofertar(11, 13, 200, "Colidio"); // Se superpone con la anterior
         LinkedList<Reserva> resultado = _dia.cerrarDia(_comp);
         assertEquals(1, resultado.size(), "Debería haber solo 1 oferta ya que se superponen.");
     }
 
     @Test
     public void testCierreConSuperposicionYComparador() {
-        _dia.ofertar(10, 12, 100);
-        _dia.ofertar(11, 13, 50); // Se superpone con la anterior, pero es más barata
+        _dia.ofertar(10, 12, 100, "Ronaldo");
+        _dia.ofertar(11, 13, 50, "Bentancur"); // Se superpone con la anterior, pero es más barata
         LinkedList<Reserva> resultado = _dia.cerrarDia(_comp);
         assertEquals(1, resultado.size(), "Debería haberse seleccionado la oferta más barata.");
         assertEquals(50, resultado.get(0).precio(), "La oferta seleccionada debería ser la más barata.");
@@ -62,17 +62,17 @@ public class DiaTest {
 
     @Test
     public void testCierreVariasOfertasSuperpuestas() {
-        _dia.ofertar(10, 12, 100);
-        _dia.ofertar(11, 13, 150); // Superpuesta
-        _dia.ofertar(12, 14, 200); // No superpuesta
+        _dia.ofertar(10, 12, 100, "Ronaldo");
+        _dia.ofertar(11, 13, 150, "Zeballos"); // Superpuesta
+        _dia.ofertar(12, 14, 200, "Van Basten"); // No superpuesta
         LinkedList<Reserva> resultado = _dia.cerrarDia(_comp);
         assertEquals(2, resultado.size(), "Debería haber 2 ofertas, solo 1 se descarta por superposición.");
     }
 
     @Test
     public void testCierreConOfertasIguales() {
-        _dia.ofertar(10, 12, 100);
-        _dia.ofertar(10, 12, 100); // Misma oferta
+        _dia.ofertar(10, 12, 100, "Ronaldo");
+        _dia.ofertar(10, 12, 100, "Ronaldo"); // Misma oferta
         LinkedList<Reserva> resultado = _dia.cerrarDia(_comp);
         assertEquals(1, resultado.size(), "Debería haber solo 1 oferta, ya que son idénticas.");
     }

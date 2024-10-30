@@ -4,7 +4,7 @@ public class Persona {
 	public String nombre;
 	public int dni;
 	public int oferta;
-	
+	//capaz hacen falta mas datos
 	public Persona(String nombre, int dni, int oferta) {
 		this.nombre = nombre;
 		this.dni = dni;

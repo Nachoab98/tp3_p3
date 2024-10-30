@@ -14,8 +14,8 @@ public class Dia {
 		this._ofertas = new LinkedList<Reserva>();
 	}
 
-	public void ofertar(int horaInicio, int horaFin, int precio) {
-		this._ofertas.add(new Reserva(horaInicio, horaFin, precio));
+	public void ofertar(int horaInicio, int horaFin, int precio, String nombre) {
+		this._ofertas.add(new Reserva(horaInicio, horaFin, precio, nombre));
 	}
 
 	public LinkedList<Reserva> cerrarDia(Comparator<Reserva> comparador) {
