@@ -23,7 +23,7 @@ class RandomTest {
 	@BeforeEach
 	public void setUp() {
 		_dia = new Dia();
-		_cantTurnos = 100;
+		_cantTurnos = 1000;
 
 		// solucion temporal: cambiar el tipo de comparador por el que se quiera aca
 		_comp = new ComparadorPrecioXHora();
@@ -43,10 +43,10 @@ class RandomTest {
 				this.reservarTurnoRandom();
 			}
 
-			int subOptim = calcularGanancia(this._dia.cerrarDia(_comp));
-			int optim = this._dia.solucionOptima();
+			LinkedList<Reserva> subOptim = this._dia.cerrarDia(_comp);
+			LinkedList<Reserva> optim  = this._dia.cerrarDiaOptimo();
 
-			if (subOptim > optim) {
+			if (calcularGanancia(subOptim) > calcularGanancia(optim)) {
 				rompio = true;
 			}
 		}

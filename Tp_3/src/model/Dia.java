@@ -49,7 +49,7 @@ public class Dia {
 		return res;
 	}
 	
-	public int solucionOptima() {
-		return OPT.maxGanancia(_ofertas);
+	public LinkedList<Reserva> cerrarDiaOptimo() {
+		return OPT.solucionOptima(_ofertas);
 	}
 }
