@@ -1,4 +1,4 @@
-package interfaz;
+package view;
 
 import java.awt.BorderLayout;
 
@@ -36,10 +36,10 @@ public class VentanaReservas {
 		tablaOfertas.getColumnModel().getColumn(0).setPreferredWidth(10);
 
 		frameReservas.getContentPane().add(scrollPane, BorderLayout.CENTER);
-		
+
 		panel = new JPanel();
 		frameReservas.getContentPane().add(panel, BorderLayout.SOUTH);
-		
+
 		botonVolverMenu = new JButton("Volver al Menú");
 		botonVolverMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -47,17 +47,16 @@ public class VentanaReservas {
 			}
 		});
 		panel.add(botonVolverMenu);
-		
+
 		panelSuperior = new JPanel();
 		frameReservas.getContentPane().add(panelSuperior, BorderLayout.NORTH);
 
 		frameReservas.setVisible(true);
 	}
-	
-	
-	//ESTO IRIA EN EL CONTROLADOR
+
+	// ESTO IRIA EN EL CONTROLADOR
 	public void agregarOferta(double id, String nombre, String horario, double monto) {
-        DefaultTableModel model = (DefaultTableModel) tablaOfertas.getModel();
-        model.addRow(new Object[]{id, nombre, horario, "$" + String.format("%.2f", monto)});
-    }
+		DefaultTableModel model = (DefaultTableModel) tablaOfertas.getModel();
+		model.addRow(new Object[] { id, nombre, horario, "$" + String.format("%.2f", monto) });
+	}
 }

@@ -1,4 +1,3 @@
-
 //package interfaz;
 //import javax.swing.*;
 //import java.awt.event.ActionEvent;
@@ -42,3 +41,7 @@
 //        frame.setVisible(true);
 //    }
 //}
+package view;
+
+
+

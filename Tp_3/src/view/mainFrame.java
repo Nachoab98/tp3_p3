@@ -1,4 +1,4 @@
-package interfaz;
+package view;
 
 import java.awt.CardLayout;
 import java.awt.EventQueue;
@@ -19,7 +19,6 @@ public class mainFrame extends JFrame {
 	private VentanaJuego ventanaJuego;
 	private CardLayout cardLayout;
 
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -39,38 +38,36 @@ public class mainFrame extends JFrame {
 	public mainFrame() {
 		setTitle("Al Mejor Postor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100,100,640,480);
-		getContentPane().setLayout(new CardLayout(0,0));
+		setBounds(100, 100, 640, 480);
+		getContentPane().setLayout(new CardLayout(0, 0));
 		this.cardLayout = new CardLayout();
 		getContentPane().setLayout(cardLayout);
-		
+
 		this.ventanaMenu = new VentanaMenu(this);
 		this.ventanaJuego = new VentanaJuego(this);
-		
+
 		getContentPane().add(ventanaMenu, S_VENTANAMENU);
 		getContentPane().add(ventanaJuego, S_VENTANAJUEGO);
 		AgregarMenuBar();
-		
+
 		revalidate();
 		repaint();
-		
+
 	}
 
-	public void cambiarVentana(String ventana)
-	{
+	public void cambiarVentana(String ventana) {
 		cardLayout.show(getContentPane(), ventana);
 		getContentPane().revalidate();
 		getContentPane().repaint();
 	}
-	
-	public void AgregarMenuBar()
-	{
+
+	public void AgregarMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		JMenu desplegableOpciones = new JMenu("Opciones");
 		menuBar.add(desplegableOpciones);
-		
+
 		JMenuItem acercaDe = new JMenuItem("Acerca de");
 		desplegableOpciones.add(acercaDe);
 		acercaDe.addActionListener(new ActionListener() {
@@ -82,11 +79,10 @@ public class mainFrame extends JFrame {
 			}
 
 		});
-		
+
 		JMenuItem reglasProyecto = new JMenuItem("Reglas");
 		desplegableOpciones.add(reglasProyecto);
-	
-		
+
 		JMenuItem salirJuego = new JMenuItem("Salir del Proyecto");
 		desplegableOpciones.add(salirJuego);
 		salirJuego.addActionListener(new ActionListener() {
@@ -101,7 +97,5 @@ public class mainFrame extends JFrame {
 			}
 		});
 	}
-	
-	
 
 }

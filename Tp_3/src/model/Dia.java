@@ -42,7 +42,7 @@ public class Dia {
 		res.sort(new Comparator<Reserva>() {
 			@Override
 			public int compare(Reserva o1, Reserva o2) {
-				return Integer.compare(o1.inicio(), o2.inicio());
+				return Integer.compare(o1.getHoraInicio(), o2.getHoraInicio());
 			}
 		});
 

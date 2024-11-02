@@ -36,16 +36,16 @@ class RandomTest {
 	@Test
 	void test() {
 		boolean rompio = false;
-		for(int i = 0; !rompio && i < 10000; i++) {
-			
+		for (int i = 0; !rompio && i < 10000; i++) {
+
 			_dia = new Dia();
 			for (int t = 0; t < _cantTurnos; t++) {
 				this.reservarTurnoRandom();
 			}
-			
+
 			int subOptim = calcularGanancia(this._dia.cerrarDia(_comp));
 			int optim = this._dia.solucionOptima();
-			
+
 			if (subOptim > optim) {
 				rompio = true;
 			}
@@ -84,11 +84,11 @@ class RandomTest {
 
 		this._dia.ofertar(inicio, fin, precio, "Random");
 	}
-	
+
 	private int calcularGanancia(LinkedList<Reserva> reservas) {
 		int res = 0;
-		for(Reserva r : reservas) {
-			res += r.precio();
+		for (Reserva r : reservas) {
+			res += r.getPrecioOfrecido();
 		}
 		return res;
 	}

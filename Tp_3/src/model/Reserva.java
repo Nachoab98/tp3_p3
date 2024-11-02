@@ -2,46 +2,47 @@
 package model;
 
 public class Reserva {
-    private int _horaInicio;
-    private int _horaFin;
-    private int _precioOfrecido;
-    private String _nombre;
+	private int horaInicio;
+	private int horaFin;
+	private int precioOfrecido;
+	private String nombre;
 
-    public Reserva(int horaInicio, int horaFin, int precioOfrecido, String nombre) {
-        if (!(horaInicio >= 0 && horaFin <= 24 && horaInicio < horaFin)) {
-            throw new RuntimeException("Horarios invalidos");
-        }
-        if (precioOfrecido < 0) {
-            throw new RuntimeException("Precio ofrecido invalido");
-        }
-        this._horaInicio = horaInicio;
-        this._horaFin = horaFin;
-        this._precioOfrecido = precioOfrecido;
-        this._nombre = nombre;
-    }
+	public Reserva(int horaInicio, int horaFin, int precioOfrecido, String nombre) {
+		if (!(horaInicio >= 0 && horaFin <= 24 && horaInicio < horaFin)) {
+			throw new RuntimeException("Horarios invalidos");
+		}
+		if (precioOfrecido < 0) {
+			throw new RuntimeException("Precio ofrecido invalido");
+		}
+		this.horaInicio = horaInicio;
+		this.horaFin = horaFin;
+		this.precioOfrecido = precioOfrecido;
+		this.nombre = nombre;
+	}
 
-    public double precioXHora() {
-        return (this._precioOfrecido / (this._horaFin - this._horaInicio));
-    }
+	public double precioXHora() {
+		return (this.precioOfrecido / (this.horaFin - this.horaInicio));
+	}
 
-    public static boolean superponen(Reserva a, Reserva b) {
-        return a.inicio() < b.fin() && b.inicio() < a.fin();
-    }
+	public static boolean superponen(Reserva a, Reserva b) {
+		return a.getHoraInicio() < b.getHoraFin() && b.getHoraInicio() < a.getHoraFin();
+	}
 
-    // GETTERS
-    public int inicio() {
-        return this._horaInicio;
-    }
+	// GETTERS
+	public int getHoraInicio() {
+		return this.horaInicio;
+	}
 
-    public int fin() {
-        return this._horaFin;
-    }
+	public int getHoraFin() {
+		return this.horaFin;
+	}
 
-    public int precio() {
-        return this._precioOfrecido;
-    }
+	public int getPrecioOfrecido() {
+		return this.precioOfrecido;
+	}
 
-    public String nombre() {
-        return this._nombre;
-    }
+	public String getNombre() {
+		return this.nombre;
+	}
+
 }
