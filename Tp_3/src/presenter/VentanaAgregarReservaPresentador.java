@@ -31,7 +31,7 @@ public class VentanaAgregarReservaPresentador {
 		Gson gson = new GsonBuilder().registerTypeAdapter(Reserva.class, new ReservaAdapter()).create();
 		String jsonReserva = gson.toJson(reserva);
 		System.out.println("JSON generado: " + jsonReserva);
-		try (FileOutputStream archivo = new FileOutputStream("Docs/reservas.txt", true);
+		try (FileOutputStream archivo = new FileOutputStream("Docs/reservas.json", true);
 				OutputStreamWriter lineaEscrita = new OutputStreamWriter(archivo)) {
 
 			lineaEscrita.write(jsonReserva);

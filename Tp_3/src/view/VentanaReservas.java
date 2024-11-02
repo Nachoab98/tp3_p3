@@ -5,7 +5,12 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+
+import presenter.VentanaReservasPresentador;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -17,9 +22,13 @@ public class VentanaReservas {
 	private JPanel panel;
 	private JButton botonVolverMenu;
 	private JPanel panelSuperior;
+	private VentanaReservasPresentador presenter;
 
 	public VentanaReservas() {
 		ventanaReservas();
+		presenter = new VentanaReservasPresentador(this);
+		presenter.iniciar();
+		
 	}
 
 	public void ventanaReservas() {
@@ -27,6 +36,9 @@ public class VentanaReservas {
 		frameReservas.setTitle("Reservas");
 		frameReservas.setBounds(100, 100, 500, 450);
 		frameReservas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
 		String[] columnNames = { "ID", "Nombre del Cliente", "Horario", "Monto" };
 		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
@@ -34,6 +46,10 @@ public class VentanaReservas {
 		tablaOfertas = new JTable(model);
 		JScrollPane scrollPane = new JScrollPane(tablaOfertas);
 		tablaOfertas.getColumnModel().getColumn(0).setPreferredWidth(10);
+		
+		for (int i = 0; i < tablaOfertas.getColumnModel().getColumnCount(); i++) {
+		    tablaOfertas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+		}
 
 		frameReservas.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
