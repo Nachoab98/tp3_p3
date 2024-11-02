@@ -6,6 +6,8 @@ public class Reserva {
 	private int horaFin;
 	private int precioOfrecido;
 	private String nombre;
+	private static int contadorIDs = 0;
+	private int ID;
 
 	public Reserva(int horaInicio, int horaFin, int precioOfrecido, String nombre) {
 		if (!(horaInicio >= 0 && horaFin <= 24 && horaInicio < horaFin)) {
@@ -18,6 +20,7 @@ public class Reserva {
 		this.horaFin = horaFin;
 		this.precioOfrecido = precioOfrecido;
 		this.nombre = nombre;
+		this.ID = contadorIDs++;
 	}
 
 	public double precioXHora() {
@@ -43,6 +46,11 @@ public class Reserva {
 
 	public String getNombre() {
 		return this.nombre;
+	}
+	
+	public int getID()
+	{
+		return this.ID;
 	}
 
 }

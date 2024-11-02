@@ -168,10 +168,19 @@ public class VentanaAgregarReserva {
 				int precioOfrecido = Integer.parseInt(textField_1.getText());
 
 				presenter.guardarOferta(nombre, horaInicio, horaFin, precioOfrecido);
+				limpiarCampos();
 			}
 		});
 		panel.add(botonReservar);
 
 		frameReserva.setVisible(true);
+	}
+
+	private void limpiarCampos() {
+		textField.setText("");
+		textField_1.setText("");
+		comboHoraInicio.setSelectedIndex(0);
+		comboHoraFin.setSelectedIndex(0);
+		
 	}
 }

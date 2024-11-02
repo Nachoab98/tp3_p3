@@ -16,6 +16,7 @@ public class ReservaAdapter extends TypeAdapter<Reserva> {
 		out.name("horaFin").value(reserva.getHoraFin());
 		out.name("precioOfrecido").value(reserva.getPrecioOfrecido());
 		out.name("nombre").value(reserva.getNombre());
+		out.name("ID").value(reserva.getID());
 		out.endObject();
 	}
 
@@ -24,6 +25,8 @@ public class ReservaAdapter extends TypeAdapter<Reserva> {
 		in.beginObject();
 		int horaInicio = 0, horaFin = 0, precioOfrecido = 0;
 		String nombre = "";
+		int id = 0;
+		
 		while (in.hasNext()) {
 			switch (in.nextName()) {
 			case "horaInicio":
@@ -38,6 +41,9 @@ public class ReservaAdapter extends TypeAdapter<Reserva> {
 			case "nombre":
 				nombre = in.nextString();
 				break;
+			case "ID": // Agregado para leer el ID
+                id = in.nextInt();
+                break;
 			}
 		}
 		in.endObject();
