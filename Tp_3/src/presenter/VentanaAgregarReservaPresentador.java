@@ -22,8 +22,8 @@ public class VentanaAgregarReservaPresentador {
 			Reserva reserva = new Reserva(horaInicio, horaFin, montoOfertado, nombre);
 			guardarTextoEnArchivo(reserva);
 		} catch (RuntimeException ex) {
-			ex.printStackTrace();
-		}
+			throw ex;
+			}
 
 	}
 
@@ -46,4 +46,3 @@ public class VentanaAgregarReservaPresentador {
 	}
 
 }
-

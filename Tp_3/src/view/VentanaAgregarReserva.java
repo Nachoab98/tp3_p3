@@ -7,6 +7,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
@@ -161,15 +163,29 @@ public class VentanaAgregarReserva {
 
 		JButton botonReservar = new JButton("Reservar");
 		botonReservar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String nombre = textField.getText();
-				int horaInicio = comboHoraInicio.getSelectedIndex();
-				int horaFin = comboHoraFin.getSelectedIndex();
-				int precioOfrecido = Integer.parseInt(textField_1.getText());
+		    public void actionPerformed(ActionEvent e) {
+		        String nombre = textField.getText();
+		        int horaInicio = comboHoraInicio.getSelectedIndex();
+		        int horaFin = comboHoraFin.getSelectedIndex();
 
-				presenter.guardarOferta(nombre, horaInicio, horaFin, precioOfrecido);
-				limpiarCampos();
-			}
+		        try {
+		            int precioOfrecido = Integer.parseInt(textField_1.getText());
+		            presenter.guardarOferta(nombre, horaInicio, horaFin, precioOfrecido);
+		            limpiarCampos();
+		        } catch (NumberFormatException ex) {
+		            JOptionPane.showMessageDialog(frameReserva, "Error: Ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+		        } catch (RuntimeException ex) {
+		            if (ex.getMessage().equals("Precio ofrecido invalido")) {
+		                JOptionPane.showMessageDialog(frameReserva, "Error: Precio ofrecido inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+		            } else if (ex.getMessage().equals("Horarios invalidos")) {
+		                JOptionPane.showMessageDialog(frameReserva, "Error: Horarios inválidos.", "Error", JOptionPane.ERROR_MESSAGE);
+		            } else if (ex.getMessage().equals("Ingrese un nombre")) {
+		                JOptionPane.showMessageDialog(frameReserva, "Error: Ingrese un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+		            } else {
+		                JOptionPane.showMessageDialog(frameReserva, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		            }
+		        }
+		    }
 		});
 		panel.add(botonReservar);
 

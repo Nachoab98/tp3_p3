@@ -73,8 +73,8 @@ class RandomTest {
 		}
 
 		// generamos precio
-		int promedioEsperado = 10000;
-		int desvioEstandar = 2000;
+		Integer promedioEsperado = 10000;
+		Integer desvioEstandar = 2000;
 
 		do {
 			precio = (int) rand.nextGaussian(promedioEsperado, desvioEstandar);
