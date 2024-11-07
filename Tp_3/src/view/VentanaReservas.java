@@ -71,8 +71,8 @@ public class VentanaReservas {
 	}
 
 	// ESTO IRIA EN EL CONTROLADOR
-	public void agregarOferta(double id, String nombre, String horario, double monto) {
+	public void agregarOferta(int id, String nombre, String horario, int monto) {
 		DefaultTableModel model = (DefaultTableModel) tablaOfertas.getModel();
-		model.addRow(new Object[] { id, nombre, horario, "$" + String.format("%.2f", monto) });
+		model.addRow(new Object[] { id, nombre, horario, "$ " + monto });
 	}
 }

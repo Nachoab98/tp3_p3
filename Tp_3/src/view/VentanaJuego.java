@@ -43,7 +43,10 @@ public class VentanaJuego extends JPanel {
 		DefaultTableModel model = new DefaultTableModel(new Object[] { "Hora", "ID", "Nombre", "Monto Ofertado" }, 0);
 		tablaAdjudicacion = new JTable(model);
 		tablaAdjudicacion.getColumnModel().getColumn(1).setPreferredWidth(5);
-		tablaAdjudicacion.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+		
+		for (int i = 0; i < tablaAdjudicacion.getColumnModel().getColumnCount(); i++) {
+		    tablaAdjudicacion.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+		}
 
 		JScrollPane scrollPane = new JScrollPane(tablaAdjudicacion);
 		add(scrollPane, BorderLayout.CENTER);
@@ -87,7 +90,8 @@ public class VentanaJuego extends JPanel {
 
 		for (Reserva reserva : solucionOptima) {
 			String horario = String.format("%02d:00 - %02d:00", reserva.getHoraInicio(), reserva.getHoraFin());
-			model.addRow(new Object[] { horario, reserva.getID(), reserva.getNombre(), reserva.getPrecioOfrecido() });
+			String montoOfrecido = String.format("$ " + reserva.getPrecioOfrecido());
+			model.addRow(new Object[] { horario, reserva.getID(), reserva.getNombre(), montoOfrecido });
 		}
 	}
 }
