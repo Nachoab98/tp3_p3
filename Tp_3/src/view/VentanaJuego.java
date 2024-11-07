@@ -3,7 +3,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.util.LinkedList;
-import java.util.List;
+
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -15,9 +15,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import model.OPT;
+
 import model.Reserva;
-import presenter.VentanaAgregarReservaPresentador;
 import presenter.VentanaJuegoPresentador;
 
 public class VentanaJuego extends JPanel {

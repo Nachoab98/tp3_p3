@@ -17,6 +17,7 @@ public class VentanaJuegoPresentador {
     }
 
     public void calcularAdjudicacion() {
+    	Reserva.resetearContador();
         List<Reserva> reservas = agregarReservaPresentador.cargarReservas();
         LinkedList<Reserva> solucionOptima = OPT.solucionOptima(new LinkedList<>(reservas));
         vista.actualizarTablaAdjudicacion(solucionOptima);
