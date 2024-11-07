@@ -27,6 +27,7 @@ public class VentanaReservasPresentador {
 	private void cargarReservas()
 	{
 		List<Reserva> reservas = new ArrayList<>();
+		Reserva.resetearContador();
 		String rutaArchivo = "Docs/reservas.json";
 		Gson gson = new GsonBuilder()
 		        .registerTypeAdapter(Reserva.class, new ReservaAdapter()) 

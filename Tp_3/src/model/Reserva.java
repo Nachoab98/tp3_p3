@@ -1,12 +1,19 @@
 
 package model;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Reserva {
     private int horaInicio;
     private int horaFin;
-    private int precioOfrecido; // Asegúrate de que sea Integer
+    private int precioOfrecido; 
     private String nombre;
-    private static int contadorIDs = 0;
+    private static int contadorIDs = cargarUltimoID();
     private int ID;
 
     public Reserva(int horaInicio, int horaFin, int precioOfrecido, String nombre) {
@@ -25,6 +32,8 @@ public class Reserva {
         this.nombre = nombre;
         this.ID = contadorIDs++;
     }
+    
+   
 
     public double precioXHora() {
         return (this.precioOfrecido / (this.horaFin - this.horaInicio));
@@ -32,6 +41,28 @@ public class Reserva {
 
     public static boolean superponen(Reserva a, Reserva b) {
         return a.getHoraInicio() < b.getHoraFin() && b.getHoraInicio() < a.getHoraFin();
+    }
+    
+    private static int cargarUltimoID() {
+        File archivo = new File("Docs/ultimoID.txt");
+        if (!archivo.exists()) {
+            return 0;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            return Integer.parseInt(br.readLine());
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    private static void guardarUltimoID() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Docs/ultimoID.txt"))) {
+            bw.write(String.valueOf(contadorIDs));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // GETTERS
@@ -53,5 +84,15 @@ public class Reserva {
 
     public int getID() {
         return this.ID;
+        
     }
+    
+    public static void resetearContador() {
+        contadorIDs = 0;
+        guardarUltimoID();
+    }
+    
+   
+    
+    
 }
