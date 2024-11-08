@@ -116,9 +116,8 @@ public class VentanaAgregarReserva {
 		comboHoraFin = new JComboBox<String>();
 
 		for (int i = 0; i <= 23; i++) {
-			String hora = String.format("%02d:00", i);
-			comboHoraInicio.addItem(hora);
-			comboHoraFin.addItem(hora);
+			comboHoraInicio.addItem(String.format("%02d:00", i));
+			comboHoraFin.addItem(String.format("%02d:00", i + 1));
 		}
 
 		((JLabel) comboHoraInicio.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
@@ -166,7 +165,7 @@ public class VentanaAgregarReserva {
 		    public void actionPerformed(ActionEvent e) {
 		        String nombre = textField.getText();
 		        int horaInicio = comboHoraInicio.getSelectedIndex();
-		        int horaFin = comboHoraFin.getSelectedIndex();
+		        int horaFin = comboHoraFin.getSelectedIndex() + 1;
 
 		        try {
 		            int precioOfrecido = Integer.parseInt(textField_1.getText());
