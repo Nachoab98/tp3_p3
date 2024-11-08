@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.OPT;
 import model.Reserva;
+import model.Solver;
 import view.VentanaAdjudicacion;
 
 public class VentanaJuegoPresentador {
@@ -16,10 +17,23 @@ public class VentanaJuegoPresentador {
         this.agregarReservaPresentador = new VentanaAgregarReservaPresentador(null);
     }
 
-    public void calcularAdjudicacion() {
+    public int calcularAdjudicacion(String heuristica) {
     	Reserva.resetearContador();
-        List<Reserva> reservas = agregarReservaPresentador.cargarReservas();
-        LinkedList<Reserva> solucionOptima = OPT.solucionOptima(new LinkedList<>(reservas));
-        vista.actualizarTablaAdjudicacion(solucionOptima);
+        LinkedList<Reserva> reservas = agregarReservaPresentador.cargarReservas();
+        LinkedList<Reserva> solucion = null;
+        switch(heuristica) {
+        	case("precioTotal"):
+        	solucion = Solver.solucionPrecioTotal(reservas);
+        	break;
+        case("precioXHora"):
+        	solucion = Solver.solucionPrecioXHora(reservas);
+    		break;
+        case("opt"):
+        	solucion = Solver.solucionOPT(reservas);
+    		break;
+        }
+        int res = Solver.precioTotal(solucion);
+        vista.actualizarTablaAdjudicacion(solucion);
+        return res;
     }
 }

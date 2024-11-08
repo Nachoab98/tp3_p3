@@ -10,23 +10,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.ComparadorPrecioXHora;
-import model.Dia;
 import model.OPT;
 import model.Reserva;
+import model.Solver;
 
 class RandomTest {
 
-	private Dia _dia;
+	private LinkedList<Reserva> _dia;
 	private int _cantTurnos;
-	private Comparator<Reserva> _comp;
-
 	@BeforeEach
 	public void setUp() {
-		_dia = new Dia();
+		_dia = new LinkedList<Reserva>();
 		_cantTurnos = 1000;
-
-		// solucion temporal: cambiar el tipo de comparador por el que se quiera aca
-		_comp = new ComparadorPrecioXHora();
 
 		for (int i = 0; i < _cantTurnos; i++) {
 			this.reservarTurnoRandom();
@@ -38,15 +33,15 @@ class RandomTest {
 		boolean rompio = false;
 		for (int i = 0; !rompio && i < 10000; i++) {
 
-			_dia = new Dia();
+			_dia = new LinkedList<Reserva>();
 			for (int t = 0; t < _cantTurnos; t++) {
 				this.reservarTurnoRandom();
 			}
 
-			LinkedList<Reserva> subOptim = this._dia.cerrarDia(_comp);
-			LinkedList<Reserva> optim  = this._dia.cerrarDiaOptimo();
+			LinkedList<Reserva> subOptim = Solver.solucionPrecioXHora(_dia);
+			LinkedList<Reserva> optim  = Solver.solucionOPT(_dia);
 
-			if (calcularGanancia(subOptim) > calcularGanancia(optim)) {
+			if (Solver.precioTotal(subOptim) > Solver.precioTotal(optim)) {
 				rompio = true;
 			}
 		}
@@ -82,14 +77,7 @@ class RandomTest {
 
 		precio = precio * (fin - inicio);
 
-		this._dia.ofertar(inicio, fin, precio, "Random");
+		_dia.add(new Reserva(inicio, fin, precio, "Random"));
 	}
-
-	private int calcularGanancia(LinkedList<Reserva> reservas) {
-		int res = 0;
-		for (Reserva r : reservas) {
-			res += r.getPrecioOfrecido();
-		}
-		return res;
-	}
+	
 }

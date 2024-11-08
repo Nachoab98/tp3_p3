@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,8 +49,8 @@ public class VentanaAgregarReservaPresentador {
         }
     }
 
-    public List<Reserva> cargarReservas() {
-        List<Reserva> reservas = new ArrayList<>();
+    public LinkedList<Reserva> cargarReservas() {
+    	LinkedList<Reserva> reservas = new LinkedList<Reserva>();
         String rutaArchivo = "Docs/reservas.json";
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Reserva.class, new ReservaAdapter())
