@@ -16,7 +16,7 @@ public class mainFrame extends JFrame {
 	final static String S_VENTANAMENU = "Ventana Menu";
 	final static String S_VENTANAJUEGO = "Ventana Juego";
 	private VentanaMenu ventanaMenu;
-	private VentanaJuego ventanaJuego;
+	private VentanaAdjudicacion ventanaJuego;
 	private CardLayout cardLayout;
 
 	public static void main(String[] args) {
@@ -44,7 +44,7 @@ public class mainFrame extends JFrame {
 		getContentPane().setLayout(cardLayout);
 
 		this.ventanaMenu = new VentanaMenu(this);
-		this.ventanaJuego = new VentanaJuego(this);
+		this.ventanaJuego = new VentanaAdjudicacion(this);
 
 		getContentPane().add(ventanaMenu, S_VENTANAMENU);
 		getContentPane().add(ventanaJuego, S_VENTANAJUEGO);

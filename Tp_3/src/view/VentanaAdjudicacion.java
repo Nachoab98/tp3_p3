@@ -19,19 +19,19 @@ import java.awt.event.ActionEvent;
 import model.Reserva;
 import presenter.VentanaJuegoPresentador;
 
-public class VentanaJuego extends JPanel {
+public class VentanaAdjudicacion extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTable tablaAdjudicacion;
 	private mainFrame pantallaPrincipal;
 	private VentanaJuegoPresentador presentador;
 
-	public VentanaJuego(mainFrame pantallaPrincipal) {
+	public VentanaAdjudicacion(mainFrame pantallaPrincipal) {
 		this.pantallaPrincipal = pantallaPrincipal;
 		this.presentador = new VentanaJuegoPresentador(this);
-		iniciarJuego();
+		iniciarAdjudicacion();
 	}
 
-	public void iniciarJuego() {
+	public void iniciarAdjudicacion() {
 		removeAll();
 		setName("Al Mejor Postor");
 		setBounds(100, 100, 640, 480);

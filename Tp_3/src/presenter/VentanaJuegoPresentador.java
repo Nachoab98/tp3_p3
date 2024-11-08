@@ -5,13 +5,13 @@ import java.util.List;
 
 import model.OPT;
 import model.Reserva;
-import view.VentanaJuego;
+import view.VentanaAdjudicacion;
 
 public class VentanaJuegoPresentador {
-    private VentanaJuego vista;
+    private VentanaAdjudicacion vista;
     private VentanaAgregarReservaPresentador agregarReservaPresentador;
 
-    public VentanaJuegoPresentador(VentanaJuego vista) {
+    public VentanaJuegoPresentador(VentanaAdjudicacion vista) {
         this.vista = vista;
         this.agregarReservaPresentador = new VentanaAgregarReservaPresentador(null);
     }
