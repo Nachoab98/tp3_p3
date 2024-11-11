@@ -2,6 +2,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.LinkedList;
 
 
@@ -17,12 +18,13 @@ import java.awt.event.ActionEvent;
 
 
 import model.Reserva;
-import model.Solver;
 import presenter.VentanaJuegoPresentador;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
+import java.awt.GridLayout;
+import java.awt.Font;
 
 public class VentanaAdjudicacion extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -60,14 +62,15 @@ public class VentanaAdjudicacion extends JPanel {
 		add(panelSuperior, BorderLayout.NORTH);
 
 		JPanel panelInferior = new JPanel();
-		FlowLayout fl_panelInferior = (FlowLayout) panelInferior.getLayout();
 		add(panelInferior, BorderLayout.SOUTH);
+		panelInferior.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JPanel panelInferiorIzquierda = new JPanel();
 		panelInferior.add(panelInferiorIzquierda);
-		panelInferiorIzquierda.setLayout(new BoxLayout(panelInferiorIzquierda, BoxLayout.Y_AXIS));
+		panelInferiorIzquierda.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JLabel label_heuristica = new JLabel("Heuristica:");
+		label_heuristica.setFont(new Font("Sitka Subheading", Font.BOLD, 14));
 		label_heuristica.setHorizontalAlignment(SwingConstants.CENTER);
 		panelInferiorIzquierda.add(label_heuristica);
 		
@@ -82,26 +85,18 @@ public class VentanaAdjudicacion extends JPanel {
 		panelInferiorIzquierda.add(panel_1_1);
 		
 		JButton botonCalcular_1 = new JButton("Calcular Adjudicacion");
+		botonCalcular_1.setFont(new Font("Sitka Subheading", Font.BOLD, 13));
 		panelInferiorIzquierda.add(botonCalcular_1);
 		
 		JPanel panel_1_2 = new JPanel();
 		panelInferiorIzquierda.add(panel_1_2);
 		
 		JLabel label_gananciaTotal = new JLabel("Ganancia Total: ");
-		label_gananciaTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		label_gananciaTotal.setFont(new Font("Sitka Subheading", Font.BOLD, 14));
+		label_gananciaTotal.setHorizontalAlignment(SwingConstants.LEFT);
 		panelInferiorIzquierda.add(label_gananciaTotal);
-		
-		JPanel panel_1_3 = new JPanel();
-		panelInferiorIzquierda.add(panel_1_3);
-		
-		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout_2 = (FlowLayout) panel_1.getLayout();
-		flowLayout_2.setHgap(50);
-		panelInferior.add(panel_1);
 
 		JPanel panelInferiorDerecha = new JPanel();
-		FlowLayout fl_panelInferiorDerecha = (FlowLayout) panelInferiorDerecha.getLayout();
-		fl_panelInferiorDerecha.setAlignment(FlowLayout.RIGHT);
 		panelInferior.add(panelInferiorDerecha);
 		
 		JButton botonMenu = new JButton("Volver al Menu");
@@ -110,7 +105,24 @@ public class VentanaAdjudicacion extends JPanel {
 				pantallaPrincipal.cambiarVentana("Ventana Menu");
 			}
 		});
+		panelInferiorDerecha.setLayout(new BorderLayout(0, 0));
 		panelInferiorDerecha.add(botonMenu);
+		
+		JPanel panel_1 = new JPanel();
+		panelInferiorDerecha.add(panel_1, BorderLayout.NORTH);
+		panel_1.setPreferredSize(new Dimension(0,50));
+		
+		JPanel panel_2 = new JPanel();
+		panelInferiorDerecha.add(panel_2, BorderLayout.SOUTH);
+		panel_2.setPreferredSize(new Dimension(0,50));
+		
+		JPanel panel = new JPanel();
+		panelInferiorDerecha.add(panel, BorderLayout.WEST);
+		panel.setPreferredSize(new Dimension(50,0));
+		
+		JPanel panel_3 = new JPanel();
+		panelInferiorDerecha.add(panel_3, BorderLayout.EAST);
+		panel_3.setPreferredSize(new Dimension(50,0));
 
 		JPanel panelIzquierda = new JPanel();
 		add(panelIzquierda, BorderLayout.WEST);
