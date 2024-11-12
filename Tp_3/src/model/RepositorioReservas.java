@@ -25,9 +25,7 @@ public class RepositorioReservas {
 			lineaEscrita.write(jsonReserva);
 			lineaEscrita.write(System.lineSeparator());
 			lineaEscrita.flush();
-
 		}
-
 	}
 
 	public LinkedList<Reserva> cargarReservas() throws IOException {
@@ -40,7 +38,6 @@ public class RepositorioReservas {
 					reservas.add(reserva);
 				}
 			}
-
 			return reservas;
 		}
 

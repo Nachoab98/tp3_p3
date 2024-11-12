@@ -63,10 +63,10 @@ public class VentanaAgregarReserva {
 		JPanel panelLabelNombre = new JPanel();
 		panelCentral.add(panelLabelNombre);
 		panelLabelNombre.setLayout(new GridLayout(0, 1, 0, 0));
-		JLabel lblNewLabel = new JLabel("Ingresa tu nombre:");
-		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panelLabelNombre.add(lblNewLabel);
+		JLabel lblNombre = new JLabel("Ingresa tu nombre:");
+		lblNombre.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		panelLabelNombre.add(lblNombre);
 		JPanel panelFieldNombre = new JPanel();
 		panelCentral.add(panelFieldNombre);
 		panelFieldNombre.setLayout(new BorderLayout(0, 0));

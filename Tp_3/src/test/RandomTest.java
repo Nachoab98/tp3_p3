@@ -18,6 +18,7 @@ class RandomTest {
 
 	private LinkedList<Reserva> _dia;
 	private int _cantTurnos;
+
 	@BeforeEach
 	public void setUp() {
 		_dia = new LinkedList<Reserva>();
@@ -39,7 +40,7 @@ class RandomTest {
 			}
 
 			LinkedList<Reserva> subOptim = Solver.solucionPrecioXHora(_dia);
-			LinkedList<Reserva> optim  = Solver.solucionOPT(_dia);
+			LinkedList<Reserva> optim = Solver.solucionOPT(_dia);
 
 			if (Solver.precioTotal(subOptim) > Solver.precioTotal(optim)) {
 				rompio = true;
@@ -57,27 +58,20 @@ class RandomTest {
 		int precio;
 
 		do {
-			inicio = rand.nextInt(25);
-			fin = rand.nextInt(25);
+			int a = rand.nextInt(25);
+			int b = rand.nextInt(25);
+			inicio = Math.min(a, b);
+			fin = Math.max(a, b);
 		} while (inicio == fin);
 
-		if (inicio > fin) {
-			int temp = inicio;
-			inicio = fin;
-			fin = temp;
-		}
-
 		// generamos precio
-		Integer promedioEsperado = 10000;
-		Integer desvioEstandar = 2000;
+		int horas = fin - inicio;
+		double promedioEsperado = 10000 * horas;
+		double desvioEstandar = 2000 * Math.sqrt(horas);
 
-		do {
-			precio = (int) rand.nextGaussian(promedioEsperado, desvioEstandar);
-		} while (precio < 0);
-
-		precio = precio * (fin - inicio);
+		precio = Math.max(1, (int) rand.nextGaussian(promedioEsperado, desvioEstandar));
 
 		_dia.add(new Reserva(inicio, fin, precio, "Random"));
 	}
-	
+
 }

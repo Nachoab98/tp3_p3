@@ -17,10 +17,10 @@ public class VentanaMenu extends JPanel {
 
 	public VentanaMenu(mainFrame pantallaPrincipal) {
 		this.pantallaPrincipal = pantallaPrincipal;
-		menuJuego();
+		menuPrincipal();
 	}
 
-	public void menuJuego() {
+	public void menuPrincipal() {
 		removeAll();
 		repaint();
 		setBounds(100, 100, 640, 480);

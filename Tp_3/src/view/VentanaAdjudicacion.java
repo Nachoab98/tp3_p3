@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import model.Reserva;
-import presenter.VentanaJuegoPresentador;
+import presenter.VentanaAdjudicacionPresentador;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
@@ -26,11 +26,11 @@ public class VentanaAdjudicacion extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTable tablaAdjudicacion;
 	private mainFrame pantallaPrincipal;
-	private VentanaJuegoPresentador presentador;
+	private VentanaAdjudicacionPresentador presentador;
 
 	public VentanaAdjudicacion(mainFrame pantallaPrincipal) {
 		this.pantallaPrincipal = pantallaPrincipal;
-		this.presentador = new VentanaJuegoPresentador(this);
+		this.presentador = new VentanaAdjudicacionPresentador(this);
 		iniciarAdjudicacion();
 	}
 
