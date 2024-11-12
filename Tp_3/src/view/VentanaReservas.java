@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 public class VentanaReservas {
 	private JFrame frameReservas;
 	private JTable tablaOfertas;
-	private JPanel panel;
+	private JPanel panelBotonMenu;
 	private JButton botonVolverMenu;
 	private JPanel panelSuperior;
 	private VentanaReservasPresentador presenter;
@@ -28,7 +28,7 @@ public class VentanaReservas {
 		ventanaReservas();
 		presenter = new VentanaReservasPresentador(this);
 		presenter.iniciar();
-		
+
 	}
 
 	public void ventanaReservas() {
@@ -36,7 +36,7 @@ public class VentanaReservas {
 		frameReservas.setTitle("Reservas");
 		frameReservas.setBounds(100, 100, 500, 450);
 		frameReservas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
+
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -46,15 +46,15 @@ public class VentanaReservas {
 		tablaOfertas = new JTable(model);
 		JScrollPane scrollPane = new JScrollPane(tablaOfertas);
 		tablaOfertas.getColumnModel().getColumn(0).setPreferredWidth(10);
-		
+
 		for (int i = 0; i < tablaOfertas.getColumnModel().getColumnCount(); i++) {
-		    tablaOfertas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+			tablaOfertas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
 		}
 
 		frameReservas.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-		panel = new JPanel();
-		frameReservas.getContentPane().add(panel, BorderLayout.SOUTH);
+		panelBotonMenu = new JPanel();
+		frameReservas.getContentPane().add(panelBotonMenu, BorderLayout.SOUTH);
 
 		botonVolverMenu = new JButton("Volver al Menú");
 		botonVolverMenu.addActionListener(new ActionListener() {
@@ -62,7 +62,7 @@ public class VentanaReservas {
 				frameReservas.dispose();
 			}
 		});
-		panel.add(botonVolverMenu);
+		panelBotonMenu.add(botonVolverMenu);
 
 		panelSuperior = new JPanel();
 		frameReservas.getContentPane().add(panelSuperior, BorderLayout.NORTH);

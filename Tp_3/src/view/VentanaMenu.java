@@ -33,43 +33,43 @@ public class VentanaMenu extends JPanel {
 		JLabel espacioVacio2 = new JLabel("");
 		panelCentro.add(espacioVacio2);
 
-		JButton btnNewButton = new JButton("Registrar Reserva");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton botonRegistrarReserva = new JButton("Registrar Reserva");
+		botonRegistrarReserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaAgregarReserva ventanaAgregarReserva = new VentanaAgregarReserva();
 
 			}
 		});
-		panelCentro.add(btnNewButton);
+		panelCentro.add(botonRegistrarReserva);
 
 		JLabel espacioVacio = new JLabel("");
 		panelCentro.add(espacioVacio);
 
-		JButton btnNewButton_2 = new JButton("Ver Reservas");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton botonVerReservas = new JButton("Ver Reservas");
+		botonVerReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaReservas ventanaReservas = new VentanaReservas();
 			}
 		});
-		panelCentro.add(btnNewButton_2);
+		panelCentro.add(botonVerReservas);
 
 		JLabel espacioVacio1 = new JLabel("");
 		panelCentro.add(espacioVacio1);
 
-		JButton btnNewButton_1 = new JButton("Resolver Adjudicación");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton BotonAdjudicacion = new JButton("Resolver Adjudicación");
+		BotonAdjudicacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pantallaPrincipal.cambiarVentana("Ventana Juego");
 			}
 		});
-		panelCentro.add(btnNewButton_1);
+		panelCentro.add(BotonAdjudicacion);
 
 		JPanel panelSuperior = new JPanel();
 		add(panelSuperior, BorderLayout.NORTH);
 
-		JLabel lblNewLabel = new JLabel("Al Mejor Postor");
-		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
-		panelSuperior.add(lblNewLabel);
+		JLabel labelTitulo = new JLabel("Al Mejor Postor");
+		labelTitulo.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
+		panelSuperior.add(labelTitulo);
 
 		JPanel panelInferior = new JPanel();
 		add(panelInferior, BorderLayout.SOUTH);

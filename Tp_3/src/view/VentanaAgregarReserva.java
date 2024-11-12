@@ -28,10 +28,12 @@ public class VentanaAgregarReserva {
 	private JTextField textField;
 	private JTextField textField_1;
 	private VentanaAgregarReservaPresentador presenter;
+
 	public VentanaAgregarReserva() {
 		this.presenter = new VentanaAgregarReservaPresentador(this);
 		ventanaReserva();
 	}
+
 	public void ventanaReserva() {
 		frameReserva = new JFrame("Agregar Reserva");
 		frameReserva.setTitle("Agregar Reserva");
@@ -44,13 +46,13 @@ public class VentanaAgregarReserva {
 		panelSuperior.add(labelReserva);
 		JPanel panelInferior = new JPanel();
 		frameReserva.getContentPane().add(panelInferior, BorderLayout.SOUTH);
-		JButton btnNewButton = new JButton("Volver al Menú");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton botonMenu = new JButton("Volver al Menú");
+		botonMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frameReserva.dispose();
 			}
 		});
-		panelInferior.add(btnNewButton);
+		panelInferior.add(botonMenu);
 		JPanel panelIzquierda = new JPanel();
 		frameReserva.getContentPane().add(panelIzquierda, BorderLayout.WEST);
 		JPanel panelDerecha = new JPanel();
@@ -58,38 +60,38 @@ public class VentanaAgregarReserva {
 		JPanel panelCentral = new JPanel();
 		frameReserva.getContentPane().add(panelCentral, BorderLayout.CENTER);
 		panelCentral.setLayout(new GridLayout(6, 0, 0, 0));
-		JPanel panel_1 = new JPanel();
-		panelCentral.add(panel_1);
-		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
+		JPanel panelLabelNombre = new JPanel();
+		panelCentral.add(panelLabelNombre);
+		panelLabelNombre.setLayout(new GridLayout(0, 1, 0, 0));
 		JLabel lblNewLabel = new JLabel("Ingresa tu nombre:");
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_1.add(lblNewLabel);
-		JPanel panel_2 = new JPanel();
-		panelCentral.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
+		panelLabelNombre.add(lblNewLabel);
+		JPanel panelFieldNombre = new JPanel();
+		panelCentral.add(panelFieldNombre);
+		panelFieldNombre.setLayout(new BorderLayout(0, 0));
 		textField = new JTextField();
-		panel_2.add(textField);
+		panelFieldNombre.add(textField);
 		textField.setColumns(10);
 		JPanel panel_6 = new JPanel();
-		panel_2.add(panel_6, BorderLayout.SOUTH);
+		panelFieldNombre.add(panel_6, BorderLayout.SOUTH);
 		JPanel panel_7 = new JPanel();
-		panel_2.add(panel_7, BorderLayout.NORTH);
+		panelFieldNombre.add(panel_7, BorderLayout.NORTH);
 		JPanel panel_8 = new JPanel();
-		panel_2.add(panel_8, BorderLayout.WEST);
+		panelFieldNombre.add(panel_8, BorderLayout.WEST);
 		panel_8.setPreferredSize(new Dimension(70, 20));
 		JPanel panel_9 = new JPanel();
-		panel_2.add(panel_9, BorderLayout.EAST);
+		panelFieldNombre.add(panel_9, BorderLayout.EAST);
 		panel_9.setPreferredSize(new Dimension(70, 20));
-		JPanel panel_3 = new JPanel();
-		panelCentral.add(panel_3);
-		panel_3.setLayout(new GridLayout(0, 2, 0, 0));
+		JPanel panelComboHoras = new JPanel();
+		panelCentral.add(panelComboHoras);
+		panelComboHoras.setLayout(new GridLayout(0, 2, 0, 0));
 		JLabel labelHorarioInicio = new JLabel("Hora Inicio");
 		labelHorarioInicio.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(labelHorarioInicio);
+		panelComboHoras.add(labelHorarioInicio);
 		JLabel labelHoraFin = new JLabel("Hora Fin");
 		labelHoraFin.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(labelHoraFin);
+		panelComboHoras.add(labelHoraFin);
 		comboHoraInicio = new JComboBox<String>();
 		comboHoraFin = new JComboBox<String>();
 		for (int i = 0; i <= 23; i++) {
@@ -98,71 +100,77 @@ public class VentanaAgregarReserva {
 		}
 		((JLabel) comboHoraInicio.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		((JLabel) comboHoraFin.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(comboHoraInicio);
-		panel_3.add(comboHoraFin);
-		JPanel panel_4 = new JPanel();
-		panelCentral.add(panel_4);
-		panel_4.setLayout(new GridLayout(1, 0, 0, 0));
+		panelComboHoras.add(comboHoraInicio);
+		panelComboHoras.add(comboHoraFin);
+		JPanel panelLabelOfertar = new JPanel();
+		panelCentral.add(panelLabelOfertar);
+		panelLabelOfertar.setLayout(new GridLayout(1, 0, 0, 0));
 		JLabel lblNewLabel_1 = new JLabel("Monto a Ofertar:");
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_4.add(lblNewLabel_1);
-		JPanel panel_5 = new JPanel();
-		panelCentral.add(panel_5);
-		panel_5.setLayout(new BorderLayout(0, 0));
+		panelLabelOfertar.add(lblNewLabel_1);
+		JPanel panelTextFieldOferta = new JPanel();
+		panelCentral.add(panelTextFieldOferta);
+		panelTextFieldOferta.setLayout(new BorderLayout(0, 0));
 		textField_1 = new JTextField();
-		panel_5.add(textField_1);
+		panelTextFieldOferta.add(textField_1);
 		textField_1.setColumns(10);
 		JPanel panel_10 = new JPanel();
-		panel_5.add(panel_10, BorderLayout.NORTH);
+		panelTextFieldOferta.add(panel_10, BorderLayout.NORTH);
 		JPanel panel_11 = new JPanel();
-		panel_5.add(panel_11, BorderLayout.SOUTH);
+		panelTextFieldOferta.add(panel_11, BorderLayout.SOUTH);
 		JPanel panel_12 = new JPanel();
-		panel_5.add(panel_12, BorderLayout.WEST);
+		panelTextFieldOferta.add(panel_12, BorderLayout.WEST);
 		panel_12.setPreferredSize(new Dimension(70, 20));
 		JPanel panel_13 = new JPanel();
-		panel_5.add(panel_13, BorderLayout.EAST);
+		panelTextFieldOferta.add(panel_13, BorderLayout.EAST);
 		panel_13.setPreferredSize(new Dimension(70, 20));
-		JPanel panel = new JPanel();
-		panelCentral.add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel panelBotonReserva = new JPanel();
+		panelCentral.add(panelBotonReserva);
+		panelBotonReserva.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JButton botonReservar = new JButton("Reservar");
 		botonReservar.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        String nombre = textField.getText();
-		        int horaInicio = comboHoraInicio.getSelectedIndex();
-		        int horaFin = comboHoraFin.getSelectedIndex() + 1;
-		        try {
-		            int precioOfrecido = Integer.parseInt(textField_1.getText());
-		            presenter.guardarOferta(nombre, horaInicio, horaFin, precioOfrecido);
-		            limpiarCampos();
-		        } catch (NumberFormatException ex) {
-		            JOptionPane.showMessageDialog(frameReserva, "Error: Ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
-		        } catch (RuntimeException ex) {
-		            if (ex.getMessage().equals("Precio ofrecido invalido")) {
-		                JOptionPane.showMessageDialog(frameReserva, "Error: Precio ofrecido inválido.", "Error", JOptionPane.ERROR_MESSAGE);
-		            } else if (ex.getMessage().equals("Horarios invalidos")) {
-		                JOptionPane.showMessageDialog(frameReserva, "Error: Horarios inválidos.", "Error", JOptionPane.ERROR_MESSAGE);
-		            } else if (ex.getMessage().equals("Ingrese un nombre")) {
-		                JOptionPane.showMessageDialog(frameReserva, "Error: Ingrese un nombre.", "Error", JOptionPane.ERROR_MESSAGE);
-		            } else {
-		                JOptionPane.showMessageDialog(frameReserva, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-		            }
-		        }
-		    }
+			public void actionPerformed(ActionEvent e) {
+				String nombre = textField.getText();
+				int horaInicio = comboHoraInicio.getSelectedIndex();
+				int horaFin = comboHoraFin.getSelectedIndex() + 1;
+				try {
+					int precioOfrecido = Integer.parseInt(textField_1.getText());
+					presenter.guardarOferta(nombre, horaInicio, horaFin, precioOfrecido);
+					limpiarCampos();
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(frameReserva, "Error: Ingrese un número válido.", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				} catch (RuntimeException ex) {
+					if (ex.getMessage().equals("Precio ofrecido invalido")) {
+						JOptionPane.showMessageDialog(frameReserva, "Error: Precio ofrecido inválido.", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					} else if (ex.getMessage().equals("Horarios invalidos")) {
+						JOptionPane.showMessageDialog(frameReserva, "Error: Horarios inválidos.", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					} else if (ex.getMessage().equals("Ingrese un nombre")) {
+						JOptionPane.showMessageDialog(frameReserva, "Error: Ingrese un nombre.", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(frameReserva, "Error: " + ex.getMessage(), "Error",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
 		});
-		panel.add(botonReservar);
+		panelBotonReserva.add(botonReservar);
 		frameReserva.setVisible(true);
 	}
+
 	private void limpiarCampos() {
 		textField.setText("");
 		textField_1.setText("");
 		comboHoraInicio.setSelectedIndex(0);
 		comboHoraFin.setSelectedIndex(0);
-		
+
 	}
-	
+
 	public void mostrarError(String mensaje) {
-	    JOptionPane.showMessageDialog(frameReserva, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(frameReserva, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
 	}
 }
