@@ -32,6 +32,8 @@ public class Reserva {
         this.nombre = nombre;
         this.ID = contadorIDs++;
     }
+    
+   
 
     public double precioXHora() {
         return (this.precioOfrecido / (this.horaFin - this.horaInicio));
@@ -40,17 +42,13 @@ public class Reserva {
     public static boolean superponen(Reserva a, Reserva b) {
         return a.getHoraInicio() < b.getHoraFin() && b.getHoraInicio() < a.getHoraFin();
     }
-    public int getHoraInicio() {
-        return this.horaInicio;
-    }
-    public int getHoraFin() {
-        return this.horaFin;
-    }
+    
     private static int cargarUltimoID() {
         File archivo = new File("Docs/ultimoID.txt");
         if (!archivo.exists()) {
             return 0;
         }
+
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             return Integer.parseInt(br.readLine());
         } catch (IOException | NumberFormatException e) {
@@ -58,6 +56,7 @@ public class Reserva {
             return 0;
         }
     }
+
     private static void guardarUltimoID() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("Docs/ultimoID.txt"))) {
             bw.write(String.valueOf(contadorIDs));
@@ -65,17 +64,35 @@ public class Reserva {
             e.printStackTrace();
         }
     }
-    public static void resetearContador() {
-        contadorIDs = 0;
-        guardarUltimoID();
-    }   
+
+    // GETTERS
+    public int getHoraInicio() {
+        return this.horaInicio;
+    }
+
+    public int getHoraFin() {
+        return this.horaFin;
+    }
+
     public int getPrecioOfrecido() {
         return this.precioOfrecido;
     }
+
     public String getNombre() {
         return this.nombre;
     }
+
     public int getID() {
-        return this.ID;      
-    }   
+        return this.ID;
+        
+    }
+    
+    public static void resetearContador() {
+        contadorIDs = 0;
+        guardarUltimoID();
+    }
+    
+   
+    
+    
 }

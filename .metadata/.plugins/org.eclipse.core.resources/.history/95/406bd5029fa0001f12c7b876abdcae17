@@ -13,6 +13,7 @@ public class OPT {
 	private static int[] _wTable;
 	private static int[] _pTable;
 	private static int[] _optTable;
+
 	public static LinkedList<Reserva> solucionOptima(LinkedList<Reserva> ofertas) {
 
 		ordenarOfertas(ofertas);
@@ -22,10 +23,12 @@ public class OPT {
 		
 		return backtrackSolucion();
 	}
+
 	private static void ordenarOfertas(LinkedList<Reserva> ofertas) {
 		_ofertas = new LinkedList<Reserva>(ofertas);
 		_ofertas.sort(new ComparadorOPT());
 	}
+	
 	// calcular w
 	// simplemente deja el precio en un array para acceso mas facil
 	private static void calcular_wTable() {
@@ -34,8 +37,12 @@ public class OPT {
 			_wTable[i] = _ofertas.get(i).getPrecioOfrecido();
 		}
 	}
-	// calcular p, devuelve en la posicion i cual es el trabajo anterior que termina mas cerca del inicio de i
-	// si _pTable[i] = -1, no hay trabajo que termine antes que empiece i, requiere las ofertas ordenadas por hora de fin
+	
+	// calcular p
+	// devuelve en la posicion i cual es el trabajo anterior que termina mas cerca
+	// del inicio de i
+	// si _pTable[i] = -1, no hay trabajo que termine antes que empiece i
+	// requiere las ofertas ordenadas por hora de fin
 	private static void calcular_pTable() {
 		_pTable = new int[_ofertas.size()];
 		for (int i = 0; i < _ofertas.size(); i++) {
@@ -47,7 +54,9 @@ public class OPT {
 			}
 		}
 	}
-	// calculamos opt. devuelvue en la posicion i cual es la mayor ganancia posible hasta la posicion i
+	
+	// calculamos opt. devuelvue en la posicion i 
+	// cual es la mayor ganancia posible hasta la posicion i
 	private static void calcular_optTable() {
 		_optTable = new int[_ofertas.size()];
 		Arrays.fill(_optTable, -1);
@@ -55,6 +64,7 @@ public class OPT {
 	}
 	
 	private static int opt(int i) {
+		// caso base
 		if (i == -1) {
 			return 0;
 		}
@@ -72,6 +82,7 @@ public class OPT {
 		
 		// prog dinamica: guardamos el resultado para futuros usos
 		_optTable[i] = res;
+		
 		return res;
 	}
 	

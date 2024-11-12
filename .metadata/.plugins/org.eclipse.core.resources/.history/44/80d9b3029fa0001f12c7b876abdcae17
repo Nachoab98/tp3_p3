@@ -26,6 +26,7 @@ public class ReservaAdapter extends TypeAdapter<Reserva> {
 		int horaInicio = 0, horaFin = 0, precioOfrecido = 0;
 		String nombre = "";
 		int id = 0;
+		
 		while (in.hasNext()) {
 			switch (in.nextName()) {
 			case "horaInicio":
