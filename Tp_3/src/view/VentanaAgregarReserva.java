@@ -25,8 +25,8 @@ public class VentanaAgregarReserva extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> comboHoraInicio;
 	private JComboBox<String> comboHoraFin;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textFieldNombre;
+	private JTextField textFieldOferta;
 	private VentanaAgregarReservaPresentador presenter;
 
 	public VentanaAgregarReserva() {
@@ -70,9 +70,9 @@ public class VentanaAgregarReserva extends JFrame {
 		JPanel panelFieldNombre = new JPanel();
 		panelCentral.add(panelFieldNombre);
 		panelFieldNombre.setLayout(new BorderLayout(0, 0));
-		textField = new JTextField();
-		panelFieldNombre.add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		panelFieldNombre.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		JPanel panel_6 = new JPanel();
 		panelFieldNombre.add(panel_6, BorderLayout.SOUTH);
 		JPanel panel_7 = new JPanel();
@@ -112,9 +112,9 @@ public class VentanaAgregarReserva extends JFrame {
 		JPanel panelTextFieldOferta = new JPanel();
 		panelCentral.add(panelTextFieldOferta);
 		panelTextFieldOferta.setLayout(new BorderLayout(0, 0));
-		textField_1 = new JTextField();
-		panelTextFieldOferta.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldOferta = new JTextField();
+		panelTextFieldOferta.add(textFieldOferta);
+		textFieldOferta.setColumns(10);
 		JPanel panel_10 = new JPanel();
 		panelTextFieldOferta.add(panel_10, BorderLayout.NORTH);
 		JPanel panel_11 = new JPanel();
@@ -131,11 +131,11 @@ public class VentanaAgregarReserva extends JFrame {
 		JButton botonReservar = new JButton("Reservar");
 		botonReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombre = textField.getText();
+				String nombre = textFieldNombre.getText();
 				int horaInicio = comboHoraInicio.getSelectedIndex();
 				int horaFin = comboHoraFin.getSelectedIndex() + 1;
 				try {
-					int precioOfrecido = Integer.parseInt(textField_1.getText());
+					int precioOfrecido = Integer.parseInt(textFieldOferta.getText());
 					presenter.guardarOferta(nombre, horaInicio, horaFin, precioOfrecido);
 					limpiarCampos();
 				} catch (NumberFormatException ex) {
@@ -163,8 +163,8 @@ public class VentanaAgregarReserva extends JFrame {
 	}
 
 	private void limpiarCampos() {
-		textField.setText("");
-		textField_1.setText("");
+		textFieldNombre.setText("");
+		textFieldOferta.setText("");
 		comboHoraInicio.setSelectedIndex(0);
 		comboHoraFin.setSelectedIndex(0);
 

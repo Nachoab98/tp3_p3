@@ -16,7 +16,7 @@ public class mainFrame extends JFrame {
 	final static String S_VENTANAMENU = "Ventana Menu";
 	final static String S_VENTANAADJUDICACION = "Ventana Adjudicacion";
 	private VentanaMenu ventanaMenu;
-	private VentanaAdjudicacion ventanaJuego;
+	private VentanaAdjudicacion ventanaAdjudicacion;
 	private CardLayout cardLayout;
 
 	public static void main(String[] args) {
@@ -44,10 +44,10 @@ public class mainFrame extends JFrame {
 		getContentPane().setLayout(cardLayout);
 
 		this.ventanaMenu = new VentanaMenu(this);
-		this.ventanaJuego = new VentanaAdjudicacion(this);
+		this.ventanaAdjudicacion = new VentanaAdjudicacion(this);
 
 		getContentPane().add(ventanaMenu, S_VENTANAMENU);
-		getContentPane().add(ventanaJuego, S_VENTANAADJUDICACION);
+		getContentPane().add(ventanaAdjudicacion, S_VENTANAADJUDICACION);
 		AgregarMenuBar();
 
 		revalidate();
@@ -74,7 +74,7 @@ public class mainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Object[] option = { "Volver" };
 				String mensaje = "Proyecto creado para Programación III por: \n     -Dante Melhado,  \n     -Ignacio Aranda Bao,  \n     -Emanuel Suarez.";
-				JOptionPane.showOptionDialog(ventanaJuego, mensaje, "Información del Proyecto",
+				JOptionPane.showOptionDialog(ventanaAdjudicacion, mensaje, "Información del Proyecto",
 						JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[0]);
 			}
 
@@ -85,7 +85,7 @@ public class mainFrame extends JFrame {
 		salirJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Object[] options = { "Si", "No" };
-				int opcion = JOptionPane.showOptionDialog(ventanaJuego, "¿Estas seguro que deseas salir del proyecto?",
+				int opcion = JOptionPane.showOptionDialog(ventanaAdjudicacion, "¿Estas seguro que deseas salir del proyecto?",
 						"Advertencia", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
 						null);
 				if (JOptionPane.YES_OPTION == opcion) {
