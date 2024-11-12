@@ -10,8 +10,6 @@ import java.util.LinkedList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import presenter.ReservaAdapter;
-
 public class RepositorioReservas {
 	private static final String ARCHIVO_PATH = "Docs/reservas.json";
 	private Gson gson;

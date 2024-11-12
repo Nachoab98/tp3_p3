@@ -1,10 +1,8 @@
-package presenter;
+package model;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-
-import model.Reserva;
 
 import java.io.IOException;
 
@@ -41,8 +39,8 @@ public class ReservaAdapter extends TypeAdapter<Reserva> {
 				nombre = in.nextString();
 				break;
 			case "ID": // Agregado para leer el ID
-                id = in.nextInt();
-                break;
+				id = in.nextInt();
+				break;
 			}
 		}
 		in.endObject();
