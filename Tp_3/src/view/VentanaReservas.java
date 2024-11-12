@@ -16,8 +16,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaReservas {
-	private JFrame frameReservas;
+public class VentanaReservas extends JFrame {
+	private static final long serialVersionUID = 1L;
 	private JTable tablaOfertas;
 	private JPanel panelBotonMenu;
 	private JButton botonVolverMenu;
@@ -32,10 +32,9 @@ public class VentanaReservas {
 	}
 
 	public void ventanaReservas() {
-		frameReservas = new JFrame("Reservas");
-		frameReservas.setTitle("Reservas");
-		frameReservas.setBounds(100, 100, 500, 450);
-		frameReservas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setTitle("Reservas");
+		setBounds(100, 100, 500, 450);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -51,23 +50,23 @@ public class VentanaReservas {
 			tablaOfertas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
 		}
 
-		frameReservas.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
 
 		panelBotonMenu = new JPanel();
-		frameReservas.getContentPane().add(panelBotonMenu, BorderLayout.SOUTH);
+		getContentPane().add(panelBotonMenu, BorderLayout.SOUTH);
 
 		botonVolverMenu = new JButton("Volver al Menú");
 		botonVolverMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frameReservas.dispose();
+				dispose();
 			}
 		});
 		panelBotonMenu.add(botonVolverMenu);
 
 		panelSuperior = new JPanel();
-		frameReservas.getContentPane().add(panelSuperior, BorderLayout.NORTH);
+		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 
-		frameReservas.setVisible(true);
+		setVisible(true);
 	}
 
 	// ESTO IRIA EN EL CONTROLADOR

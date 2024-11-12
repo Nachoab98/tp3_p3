@@ -37,6 +37,7 @@ public class VentanaMenu extends JPanel {
 		botonRegistrarReserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaAgregarReserva ventanaAgregarReserva = new VentanaAgregarReserva();
+				ventanaAgregarReserva.setVisible(true);
 
 			}
 		});
@@ -49,6 +50,7 @@ public class VentanaMenu extends JPanel {
 		botonVerReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaReservas ventanaReservas = new VentanaReservas();
+				ventanaReservas.setVisible(true);
 			}
 		});
 		panelCentro.add(botonVerReservas);
@@ -59,7 +61,7 @@ public class VentanaMenu extends JPanel {
 		JButton BotonAdjudicacion = new JButton("Resolver Adjudicación");
 		BotonAdjudicacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pantallaPrincipal.cambiarVentana("Ventana Juego");
+				pantallaPrincipal.cambiarVentana("Ventana Adjudicacion");
 			}
 		});
 		panelCentro.add(BotonAdjudicacion);

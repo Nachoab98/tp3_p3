@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class mainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	final static String S_VENTANAMENU = "Ventana Menu";
-	final static String S_VENTANAJUEGO = "Ventana Juego";
+	final static String S_VENTANAADJUDICACION = "Ventana Adjudicacion";
 	private VentanaMenu ventanaMenu;
 	private VentanaAdjudicacion ventanaJuego;
 	private CardLayout cardLayout;
@@ -47,7 +47,7 @@ public class mainFrame extends JFrame {
 		this.ventanaJuego = new VentanaAdjudicacion(this);
 
 		getContentPane().add(ventanaMenu, S_VENTANAMENU);
-		getContentPane().add(ventanaJuego, S_VENTANAJUEGO);
+		getContentPane().add(ventanaJuego, S_VENTANAADJUDICACION);
 		AgregarMenuBar();
 
 		revalidate();
@@ -79,9 +79,6 @@ public class mainFrame extends JFrame {
 			}
 
 		});
-
-		JMenuItem reglasProyecto = new JMenuItem("Reglas");
-		desplegableOpciones.add(reglasProyecto);
 
 		JMenuItem salirJuego = new JMenuItem("Salir del Proyecto");
 		desplegableOpciones.add(salirJuego);

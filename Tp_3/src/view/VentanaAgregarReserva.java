@@ -21,8 +21,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaAgregarReserva {
-	private JFrame frameReserva;
+public class VentanaAgregarReserva extends JFrame {
+	private static final long serialVersionUID = 1L;
 	private JComboBox<String> comboHoraInicio;
 	private JComboBox<String> comboHoraFin;
 	private JTextField textField;
@@ -35,30 +35,30 @@ public class VentanaAgregarReserva {
 	}
 
 	public void ventanaReserva() {
-		frameReserva = new JFrame("Agregar Reserva");
-		frameReserva.setTitle("Agregar Reserva");
-		frameReserva.setBounds(100, 100, 400, 450);
-		frameReserva.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		setTitle("Agregar Reserva");
+		setBounds(100, 100, 400, 450);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		JPanel panelSuperior = new JPanel();
-		frameReserva.getContentPane().add(panelSuperior, BorderLayout.NORTH);
+		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 		JLabel labelReserva = new JLabel("Agrega tu Reserva");
 		labelReserva.setFont(new Font("OCR A Extended", Font.BOLD, 22));
 		panelSuperior.add(labelReserva);
 		JPanel panelInferior = new JPanel();
-		frameReserva.getContentPane().add(panelInferior, BorderLayout.SOUTH);
+		getContentPane().add(panelInferior, BorderLayout.SOUTH);
 		JButton botonMenu = new JButton("Volver al Menú");
 		botonMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frameReserva.dispose();
+				dispose();
 			}
 		});
 		panelInferior.add(botonMenu);
 		JPanel panelIzquierda = new JPanel();
-		frameReserva.getContentPane().add(panelIzquierda, BorderLayout.WEST);
+		getContentPane().add(panelIzquierda, BorderLayout.WEST);
 		JPanel panelDerecha = new JPanel();
-		frameReserva.getContentPane().add(panelDerecha, BorderLayout.EAST);
+		getContentPane().add(panelDerecha, BorderLayout.EAST);
 		JPanel panelCentral = new JPanel();
-		frameReserva.getContentPane().add(panelCentral, BorderLayout.CENTER);
+		getContentPane().add(panelCentral, BorderLayout.CENTER);
 		panelCentral.setLayout(new GridLayout(6, 0, 0, 0));
 		JPanel panelLabelNombre = new JPanel();
 		panelCentral.add(panelLabelNombre);
@@ -139,27 +139,27 @@ public class VentanaAgregarReserva {
 					presenter.guardarOferta(nombre, horaInicio, horaFin, precioOfrecido);
 					limpiarCampos();
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(frameReserva, "Error: Ingrese un número válido.", "Error",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(VentanaAgregarReserva.this, "Error: Ingrese un número válido.",
+							"Error", JOptionPane.ERROR_MESSAGE);
 				} catch (RuntimeException ex) {
 					if (ex.getMessage().equals("Precio ofrecido invalido")) {
-						JOptionPane.showMessageDialog(frameReserva, "Error: Precio ofrecido inválido.", "Error",
-								JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(VentanaAgregarReserva.this, "Error: Precio ofrecido inválido.",
+								"Error", JOptionPane.ERROR_MESSAGE);
 					} else if (ex.getMessage().equals("Horarios invalidos")) {
-						JOptionPane.showMessageDialog(frameReserva, "Error: Horarios inválidos.", "Error",
+						JOptionPane.showMessageDialog(VentanaAgregarReserva.this, "Error: Horarios inválidos.", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					} else if (ex.getMessage().equals("Ingrese un nombre")) {
-						JOptionPane.showMessageDialog(frameReserva, "Error: Ingrese un nombre.", "Error",
+						JOptionPane.showMessageDialog(VentanaAgregarReserva.this, "Error: Ingrese un nombre.", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					} else {
-						JOptionPane.showMessageDialog(frameReserva, "Error: " + ex.getMessage(), "Error",
+						JOptionPane.showMessageDialog(VentanaAgregarReserva.this, "Error: " + ex.getMessage(), "Error",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
 		});
 		panelBotonReserva.add(botonReservar);
-		frameReserva.setVisible(true);
+		setVisible(true);
 	}
 
 	private void limpiarCampos() {
@@ -171,6 +171,6 @@ public class VentanaAgregarReserva {
 	}
 
 	public void mostrarError(String mensaje) {
-		JOptionPane.showMessageDialog(frameReserva, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
 	}
 }
