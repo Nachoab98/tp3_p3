@@ -161,4 +161,8 @@ public class VentanaAgregarReserva {
 		comboHoraFin.setSelectedIndex(0);
 		
 	}
+	
+	public void mostrarError(String mensaje) {
+	    JOptionPane.showMessageDialog(frameReserva, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+	}
 }
